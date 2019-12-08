@@ -16,7 +16,7 @@ Overview
 
 You work for Motor Trend, a magazine about the automobile industry. Looking at a data set of a collection of cars, they are interested in exploring the relationship between a set of variables and miles per gallon (MPG) (outcome). They are particularly interested in the following two questions:
 
-    1. “Is an automatic or manual transmission better for MPG”
+    1. “Which gear provides the better MPG”
     
     2. "Quantify the MPG difference between automatic and manual transmissions" 
     
@@ -58,19 +58,19 @@ best.full.model <- step(fit.full.model, direction = "backward")
 Graphical Illustration of Comparison and Residuals
 ========================================================
 
-- A bar graph illustrating the comparison of MPG between transmissions
-The bar plot indicates manual transmissions gets more miles per gallon than automatic transmisssions. 
+- A bar graph illustrating the comparison of MPG between Speed/Gear.
+The bar plot indicates fourth gear gets more miles per gallon than other gears. 
 
 - Residual Plots
 Residual plots suggest that some transformation may be necessary to achieve linearity.
 
 ```{r echo = FALSE}
-ggp <- ggplot(mtcars, aes(x = mtcars$am, y = mtcars$mpg)) +
+ggp <- ggplot(mtcars, aes(x = mtcars$gear, y = mtcars$mpg)) +
        geom_boxplot(stat = "boxplot", col = "red", fill = "blue")
-ggp <- ggp + ggtitle("Comparison of MPG Between Transmissions") + 
+ggp <- ggp + ggtitle("Comparison of MPG Between Speed/Gear Ratio") + 
             theme(plot.title = element_text(hjust = 0.5)) +
             labs( y = "Total MPG", 
-                  x = "Transmission Type")
+                  x = "Speed/Gear")
 ggp
 
 
@@ -83,8 +83,6 @@ Conclusion
 ========================================================
 The following conclusions are made based on the test results.
 
-- Based on the test results manual transmissions are better than automatic transmissions for MPG.
-
-- The model indicates manual transmission mpg is increased by 1.80 comparing to automatic transmissions. 
+- Based on the test results fourth gear gets more miles per gallon than other gears.
 
 The estimate std values indicate automatic transmissions get on the average 17.1 MPG vs manual transmissions which get on the average 24.3 MPG, excluding all other factors. The t-test output confirms that this difference is statistically significant (p-value < 0.05).
